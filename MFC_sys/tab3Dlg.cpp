@@ -72,6 +72,28 @@ BOOL tab3Dlg::OnInitDialog()
 
 	return TRUE;  // 傳回 TRUE，除非您對控制項設定焦點
 }
+void tab3Dlg::ShowImage(IplImage *Image, CWnd *pWnd, int channels)
+{
+	CDC	*dc = pWnd->GetWindowDC();
+	IplImage *Temp = NULL;
+
+	if (channels == 4)
+	{
+		Temp = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, 3);
+		cvCvtColor(Image, Temp, CV_BGRA2BGR);
+	}
+	else
+	{
+		Temp = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, channels);
+	}
+
+
+	CvvImage Temp2;
+	Temp2.CopyOf(Temp);
+	Temp2.Show(*dc, 0, 0, Temp->width, Temp->height);
+	cvReleaseImage(&Temp);
+	ReleaseDC(dc);
+}
 void tab3Dlg::OnRButtonDown(UINT nFlags, CPoint point)
 {
 	if (point.x > (10) && point.x < (10 + 320) && point.y > 10 && point.y < (10 + 240))

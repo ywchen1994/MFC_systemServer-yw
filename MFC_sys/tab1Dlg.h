@@ -25,6 +25,8 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
+	CamShiftPatch CSpatch_inTab1;
+
 	static IplImage* sImage_live;
 	static IplImage* sImage_depth;
 	static IplImage* sImage_depthGround;
@@ -34,8 +36,8 @@ public:
 
 	CvHistogram * hisData[10];
 	int m_totalObjNum;
-	CStatic m_img_viewObj;
-	CStatic m_img_detectObj;
+	
+	
 	CvScalar maskRange = cvScalar(10, 256, 5);
 
 	CComboBox m_combo_objList;
@@ -46,4 +48,6 @@ public:
 	float m_gripCenterX;
 	float m_gripCenterY;
 	float m_gripDegree;
+	CStatic m_img_viewObj;
+	CStatic m_img_detectObj;
 };

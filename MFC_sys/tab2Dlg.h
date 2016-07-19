@@ -43,7 +43,7 @@ public:
 	int m_map_Ypos;
 
 	CStatic m_img_IPcam_map;
-	CString m_ipText;
+	
 
 	afx_msg void OnBnClickedButtonconnectP3dx();
 	afx_msg void OnBnClickedButtonconnectipcam();
